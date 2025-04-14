@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Feed Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </div>
+    <div class="container" id="fishSelectionPage">
+        <h1>Select Fish Type</h1>
+        <div class="fish-grid">
+            <div class="fish-card" data-fish="carp">
+                <i class="fas fa-fish"></i>
+                <span>Carp</span>
+            </div>
+            <div class="fish-card" data-fish="catfish">
+                <i class="fas fa-fish"></i>
+                <span>Catfish</span>
+            </div>
+            <div class="fish-card" data-fish="tilapia">
+                <i class="fas fa-fish"></i>
+                <span>Tilapia</span>
+            </div>
+            <div class="fish-card" data-fish="pangas">
+                <i class="fas fa-fish"></i>
+                <span>Pangas</span>
+            </div>
+            <div class="fish-card" data-fish="shrimp">
+                <i class="fas fa-shrimp"></i>
+                <span>Shrimp</span>
+            </div>
+            <div class="fish-card" data-fish="tigerPrawn">
+                <i class="fas fa-shrimp"></i>
+                <span>Tiger Prawn</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="calculationPage">
+        <h1 id="calculationTitle">Carp Feed Calculator</h1>
+        <form id="feedForm">
+            <div class="input-group">
+                <label for="totalFish">Total Number of Fish:</label>
+                <input type="number" id="totalFish" required min="1">
+            </div>
+            <div class="input-group">
+                <label for="avgWeight">Average Weight per Fish (grams):</label>
+                <input type="number" id="avgWeight" required min="1" max="2000">
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result" class="result-container hidden">
+            <!-- Results will be displayed here -->
+        </div>
+        <button id="backButton" class="back-button">Back to Selection</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

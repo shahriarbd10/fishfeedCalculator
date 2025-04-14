@@ -1,0 +1,185 @@
+/* Blurry purple color palette */
+:root {
+    --primary-color: rgba(106, 13, 173, 0.9); /* Blurry Dark Purple */
+    --secondary-color: rgba(138, 43, 226, 0.9); /* Blurry Purple */
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --error-color: #ff4444;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+    --primary-color: rgba(75, 0, 130, 0.9); /* Blurry Darker Purple */
+    --secondary-color: rgba(106, 13, 173, 0.9); /* Blurry Dark Purple */
+    --background-color: #1e1e1e;
+    --text-color: #ffffff;
+    --error-color: #ff6666;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+[data-theme="dark"] h1{
+
+    color: #ffffff;
+
+
+}
+
+[data-theme="dark"] label{
+
+    color: #ffffff;
+
+
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Blurry effect */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .container {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for dark mode */
+    
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.fish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.fish-card {
+    background: var(--gradient);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(5px); /* Blurry effect */
+}
+
+.fish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fish-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.fish-card span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-shadow: var(--shadow);
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.result-container {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    border-radius: 6px;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(5px); /* Blurry effect */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.error {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+.back-button {
+    margin-top: 1rem;
+    background: var(--secondary-color);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--secondary-color);
+}
