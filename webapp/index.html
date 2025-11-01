@@ -1,65 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fish Feed Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fish Feed Calculator</title>
+
+  <!-- ✅ Safe fish favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+  %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E
+  %3Cpath fill='%23ffffff' d='M490.1 222.9c-47.8-45.3-116.2-71.8-193.2-71.8-43.8 0-85.2 8.7-120.7 24.3C154.3 108.8 87.2 56 20.6 56 12.6 56 6 62.6 6 70.6c0 38.9 15.7 83.2 42.4 122.7C20 218.2 6 252.6 6 290.2c0 65.3 33.1 120.9 90.5 154.8 47.6 28.3 110.7 44.3 179.3 44.3 66.1 0 127.1-14.8 171.9-41.5 48.3-28.9 74.3-70.7 74.3-119.6 0-41.4-16.5-80.1-41.9-105.3zM332 275.5c-8.3 0-15.1-6.8-15.1-15.1s6.8-15.1 15.1-15.1 15.1 6.8 15.1 15.1-6.8 15.1-15.1 15.1z'/%3E
+  %3C/svg%3E" />
+
+  <!-- FontAwesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="theme-toggle">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </div>
-    <div class="container" id="fishSelectionPage">
-        <h1>Select Fish Type</h1>
-        <div class="fish-grid">
-            <div class="fish-card" data-fish="carp">
-                <i class="fas fa-fish"></i>
-                <span>Carp</span>
-            </div>
-            <div class="fish-card" data-fish="catfish">
-                <i class="fas fa-fish"></i>
-                <span>Catfish</span>
-            </div>
-            <div class="fish-card" data-fish="tilapia">
-                <i class="fas fa-fish"></i>
-                <span>Tilapia</span>
-            </div>
-            <div class="fish-card" data-fish="pangas">
-                <i class="fas fa-fish"></i>
-                <span>Pangas</span>
-            </div>
-            <div class="fish-card" data-fish="shrimp">
-                <i class="fas fa-shrimp"></i>
-                <span>Shrimp</span>
-            </div>
-            <div class="fish-card" data-fish="tigerPrawn">
-                <i class="fas fa-shrimp"></i>
-                <span>Tiger Prawn</span>
-            </div>
-        </div>
-    </div>
 
-    <div class="container hidden" id="calculationPage">
-        <h1 id="calculationTitle">Carp Feed Calculator</h1>
-        <form id="feedForm">
-            <div class="input-group">
-                <label for="totalFish">Total Number of Fish:</label>
-                <input type="number" id="totalFish" required min="1">
-            </div>
-            <div class="input-group">
-                <label for="avgWeight">Average Weight per Fish (grams):</label>
-                <input type="number" id="avgWeight" required min="1" max="2000">
-            </div>
-            <button type="submit">Calculate</button>
-        </form>
-        <div id="result" class="result-container hidden">
-            <!-- Results will be displayed here -->
-        </div>
-        <button id="backButton" class="back-button">Back to Selection</button>
-    </div>
+<body data-theme="light">
+  <!-- Theme toggle -->
+  <div class="theme-toggle" id="themeToggle">
+    <i id="themeIcon" class="fas fa-moon"></i>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Selection Page -->
+  <div class="container fade" id="fishSelectionPage">
+    <h1>Select Fish Type</h1>
+    <div class="fish-grid">
+      <div class="fish-card" data-fish="carp">
+        <i class="fas fa-fish"></i><span>Carp</span>
+      </div>
+      <div class="fish-card" data-fish="catfish">
+        <i class="fas fa-fish"></i><span>Catfish</span>
+      </div>
+      <div class="fish-card" data-fish="tilapia">
+        <i class="fas fa-fish"></i><span>Tilapia</span>
+      </div>
+      <div class="fish-card" data-fish="pangas">
+        <i class="fas fa-fish"></i><span>Pangas</span>
+      </div>
+      <div class="fish-card" data-fish="shrimp">
+        <i class="fas fa-shrimp"></i><span>Shrimp</span>
+      </div>
+      <div class="fish-card" data-fish="tiger prawn">
+        <i class="fas fa-shrimp"></i><span>Tiger Prawn</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculation Page -->
+  <div class="container hidden fade" id="calculationPage">
+    <h1 id="calculationTitle">Fish Feed Calculator</h1>
+    <form id="feedForm">
+      <div class="input-group">
+        <label for="totalFish">Total Number of Fish:</label>
+        <input type="number" id="totalFish" required min="1">
+      </div>
+      <div class="input-group">
+        <label for="avgWeight">Average Weight per Fish (grams):</label>
+        <input type="number" id="avgWeight" required min="1" max="2000">
+      </div>
+      <button type="submit">Calculate</button>
+    </form>
+    <div id="result" class="result-container hidden"></div>
+    <button id="backButton" class="back-button">Back to Selection</button>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      themeIcon.classList.toggle('fa-moon');
+      themeIcon.classList.toggle('fa-sun');
+    });
+
+    const fishCards = document.querySelectorAll('.fish-card');
+    const selectionPage = document.getElementById('fishSelectionPage');
+    const calcPage = document.getElementById('calculationPage');
+    const title = document.getElementById('calculationTitle');
+    const backBtn = document.getElementById('backButton');
+    const feedForm = document.getElementById('feedForm');
+    const result = document.getElementById('result');
+
+    fishCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const fish = card.dataset.fish;
+        title.textContent = `${fish.charAt(0).toUpperCase() + fish.slice(1)} Feed Calculator`;
+        selectionPage.classList.add('hidden');
+        calcPage.classList.remove('hidden');
+      });
+    });
+
+    backBtn.addEventListener('click', () => {
+      calcPage.classList.add('hidden');
+      selectionPage.classList.remove('hidden');
+      result.classList.add('hidden');
+    });
+
+    feedForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const totalFish = +document.getElementById('totalFish').value;
+      const avgWeight = +document.getElementById('avgWeight').value;
+      const feedRate = 0.03; // 3% of body weight
+      const totalFeed = (totalFish * avgWeight * feedRate) / 1000;
+
+      result.innerHTML = `
+        <h3 style="color: var(--secondary-color)">Feed Requirement:</h3>
+        <p><strong>${totalFeed.toFixed(2)} kg/day</strong> of feed required.</p>
+      `;
+      result.classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
