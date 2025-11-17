@@ -58,11 +58,22 @@
     <form id="feedForm">
       <div class="input-group">
         <label for="totalFish">Total Number of Fish:</label>
-        <input type="number" id="totalFish" required min="1">
+        <input type="number" id="totalFish" required min="1" placeholder="e.g. 100">
       </div>
       <div class="input-group">
-        <label for="avgWeight">Average Weight per Fish (grams):</label>
-        <input type="number" id="avgWeight" required min="1" max="2000">
+        <label for="avgWeight" id="avgWeightLabel">
+          Average Weight per Fish (grams):
+        </label>
+        <input
+          type="number"
+          id="avgWeight"
+          required
+          min="1"
+          max="2000"
+          step="0.1"
+          placeholder="Enter weight in grams"
+        >
+        <small id="weightHint" class="hint"></small>
       </div>
       <button type="submit">Calculate</button>
     </form>
@@ -70,55 +81,7 @@
     <button id="backButton" class="back-button">Back to Selection</button>
   </div>
 
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const body = document.body;
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      body.setAttribute('data-theme', newTheme);
-      themeIcon.classList.toggle('fa-moon');
-      themeIcon.classList.toggle('fa-sun');
-    });
-
-    const fishCards = document.querySelectorAll('.fish-card');
-    const selectionPage = document.getElementById('fishSelectionPage');
-    const calcPage = document.getElementById('calculationPage');
-    const title = document.getElementById('calculationTitle');
-    const backBtn = document.getElementById('backButton');
-    const feedForm = document.getElementById('feedForm');
-    const result = document.getElementById('result');
-
-    fishCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const fish = card.dataset.fish;
-        title.textContent = `${fish.charAt(0).toUpperCase() + fish.slice(1)} Feed Calculator`;
-        selectionPage.classList.add('hidden');
-        calcPage.classList.remove('hidden');
-      });
-    });
-
-    backBtn.addEventListener('click', () => {
-      calcPage.classList.add('hidden');
-      selectionPage.classList.remove('hidden');
-      result.classList.add('hidden');
-    });
-
-    feedForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const totalFish = +document.getElementById('totalFish').value;
-      const avgWeight = +document.getElementById('avgWeight').value;
-      const feedRate = 0.03; // 3% of body weight
-      const totalFeed = (totalFish * avgWeight * feedRate) / 1000;
-
-      result.innerHTML = `
-        <h3 style="color: var(--secondary-color)">Feed Requirement:</h3>
-        <p><strong>${totalFeed.toFixed(2)} kg/day</strong> of feed required.</p>
-      `;
-      result.classList.remove('hidden');
-    });
-  </script>
+  <!-- Main Logic -->
+  <script src="script.js"></script>
 </body>
 </html>
